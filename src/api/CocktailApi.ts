@@ -1,15 +1,6 @@
-const SEARCH_API = 'https://www.thecocktaildb.com/api/json/v1/1/search.php';
+import {COCKTAILS} from "../utils/utils.ts";
 
-// export const COCKTALES = {
-//     MARGARITA: "margarita",
-//     MOJITO: "mojito",
-//     A1: "a1",
-//     KIR: "kir"
-// }
-//
-// type Cock = typeof COCKTALES[keyof typeof COCKTALES]
-//
-//
+const SEARCH_API = 'https://www.thecocktaildb.com/api/json/v1/1/search.php';
 
 export class CocktailApi {
 
@@ -20,11 +11,13 @@ export class CocktailApi {
 
         const data = await fetch(url)
 
+         if (!data.ok) return Error ("Something went wrong fetching data.");
+
         return data.json()
     }
 
+    async fetchAll() {
+
+         return await Promise.all(Object.keys(COCKTAILS).map(key => this.fetchByName(key)))
+    }
 }
-
-
-// const api = new CocktailApi()
-// api.fetchByName('margarita').then(res => console.log(res))

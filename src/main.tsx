@@ -1,10 +1,15 @@
 import { StrictMode } from 'react'
+
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import {CocktailStore} from "./store/CocktailStore.ts";
+import {RootStoreContext} from "./store/RootStoreContext.ts";
+import {AppRouter} from "./AppRouter.tsx";
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+      <RootStoreContext value={new CocktailStore()}>
+          <AppRouter />
+      </RootStoreContext>
   </StrictMode>,
 )
