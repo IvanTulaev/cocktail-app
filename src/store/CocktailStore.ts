@@ -73,6 +73,8 @@ export class Cocktail {
         this.isLoading = true
         this.cocktailApi.fetchByName(this.name).then(fetchedDrinks => {
             runInAction(() => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 fetchedDrinks.drinks.forEach(drink => {
                     const newDrink = new Drink(this, drink)
                     this.addDrink(newDrink)
@@ -128,6 +130,8 @@ export class Drink {
 
     store: Cocktail | null = null
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     constructor(store: Cocktail, drink) {
         makeAutoObservable(this, {
             idDrink: false,
