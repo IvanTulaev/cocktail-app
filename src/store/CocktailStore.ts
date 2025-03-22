@@ -24,7 +24,6 @@ export class CocktailStore {
     }
 
     setActive = (name: string)=> {
-        console.log(this.cocktails)
         const newActive = this.cocktails.find(item => item.name === name) || null
         if (!newActive) throw new Error(`No cocktail with name "${name}"`)
         runInAction(() => {

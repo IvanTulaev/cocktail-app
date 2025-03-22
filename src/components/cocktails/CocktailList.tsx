@@ -24,7 +24,6 @@ export const CocktailList = observer(() => {
         key: Key,
         icon?: ReactNode,
     ): MenuItem {
-        console.log('collapsed', label.charAt(0))
         return {
             key,
             icon,
